@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 9922
-ADD target/transaction-api.jar transaction-api.jar
-ENTRYPOINT ["java","-jar","/transaction-api.jar"]
+ADD target/api-transaction.jar api-transaction.jar
+ENTRYPOINT ["java","-jar","/api-transaction.jar"]

@@ -34,7 +34,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: c463038352/backend-challenge
+        image: c463038352/api-transaction
         tags: latest
         registry: docker.io
         dockerfile: Dockerfile
