@@ -1,6 +1,12 @@
 name: build-java-docker
 description: test
 inputs:
+  username:
+    description: docker username
+    required: true
+  password:
+    description: docker password
+    required: true
   working-directory:
     description: working directory
     required: false
@@ -26,6 +32,6 @@ runs:
         tags: latest
         directory:  ${{ inputs.working-directory }}
         registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: ${{ inputs.username }}
+        password: ${{ inputs.password }}
         dockerfile: ${{ inputs.working-directory }}/Dockerfile
