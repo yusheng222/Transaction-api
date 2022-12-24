@@ -30,7 +30,7 @@ jobs:
 
 
   api-transaction:
-    needs: changes
+    needs: build
     if: ${{ need.changes.outputs.user == 'true' }}
     runs-on: ubuntu-latest
     steps:
