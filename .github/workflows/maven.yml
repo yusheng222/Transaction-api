@@ -38,7 +38,7 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/build-java
         with:
-          usename: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           working-directory: api-transaction
 #    steps:
