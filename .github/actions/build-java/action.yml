@@ -1,0 +1,31 @@
+name: build-java-docker
+description: test
+inputs:
+  working-directory:
+    description: working directory
+    required: false
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v2
+    - name: Set up jdk 8
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'adopt'
+        cache: maven
+    - name: Build with Maven
+      working-directory: ${{ inputs.working-directory }}
+      run: mvn -B -DskipTests package --file pom.xml
+      shell: bash
+
+    - name: Build Image and push
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: c463038352/${{ inputs.working-directory }}
+        tags: latest
+        directory:  ${{ inputs.working-directory }}
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: ${{ inputs.working-directory }}/Dockerfile
