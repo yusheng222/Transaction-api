@@ -15,7 +15,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  changes:
+  build:
     runs-on: ubuntu-latest
     outputs:
       transactionAPI: ${{ steps.filter.outputs.api-transaction}}
